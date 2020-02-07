@@ -561,7 +561,7 @@
 
             if (typeof service[key] === 'function') {
                 if (typeof value === 'function') {
-                    service[key] = value;
+                    sinon.stub(service, key).callsFake(value);
                 } else {
                     sinon.stub(service, key).callsFake(function() {
                         return value;
